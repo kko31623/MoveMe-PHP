@@ -12,6 +12,17 @@
 <div class="main">
 
 <?php
+	function getCrime($lat, $lng){
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "https://data.police.uk/api/crimes-at-location?lng=" . $lng . "&lat=" . $lat . "");
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array('accept: text/json'));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$json = curl_exec($ch);
+		curl_close($ch);
+		$data = json_decode($json);
+	//	return count($data);
+		echo count($data);
+	}
 	function find($location){
 		$ch = curl_init();
 
@@ -37,7 +48,9 @@
 	  				'description'=> $item->description,
 	  				'county' => $item->county,
 	  				'propertyType' => $item->property_type,
-	  				'address' => $item->displayable_address
+	  				'address' => $item->displayable_address,
+	  				'lng' => $item->longitude,
+	  				'lat' => $item->latitude
 	  			);
 	  		}
 			//var_dump($listData);
@@ -55,6 +68,7 @@
 			<p>Number of Bedrooms: <?= $result['numBedrooms']?></p>
 			<p>Price: £<?= $result['price']?></p>
 			<p>Description: <?= $result['description']?></p><br><br>
+			<p>Crime Count: <?= getCrime($result['lat'], $result['lng']);?></p>
 			<p>_________________________________________________________________________________________________________________</p>
 		<?php endforeach; ?>
 	<?php endif; ?>
