@@ -1,0 +1,10 @@
+body{
+	background-image: url('http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg');
+	background-size: 100%;
+}
+.contains{
+	margin-top: 10%;
+}
+button{
+	color: white; 
+}
