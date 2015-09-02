@@ -62,7 +62,7 @@
 
 	<?php if(count($results) > 0 ): ?>
 		<?php foreach($results as $result): ?>
-			<h5>County: <?= $result['county']?></h5>
+			<h5>Area: <?= $result['county']?></h5>
 			<p>Address: <?= $result['address']?></p>
 			<p>Property Type: <?= $result['propertyType']?></p>		
 			<p>Number of Bedrooms: <?= $result['numBedrooms']?></p>
