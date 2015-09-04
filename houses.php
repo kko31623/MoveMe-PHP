@@ -27,7 +27,6 @@
 		$ch = curl_init();
 
 		curl_setopt($ch, CURLOPT_URL, "http://api.zoopla.co.uk/api/v1/property_listings.json?area=" . $location . "&api_key=c88442waawanw44ygzem2ee2");
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array('accept: text/json'));
 	  	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
   		$json = curl_exec($ch);
   		curl_close($ch);      
