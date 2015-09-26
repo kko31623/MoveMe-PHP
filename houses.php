@@ -35,7 +35,7 @@
   		//var_dump($data);
 
   		$listData = array();
-  		if (isset($data->error_code)){
+  		if (isset($data->error_code) || count($data) <= 0){
   			echo "
   				<h3 style='text-align:center'>Sorry but this location is unavailable</h3>";		
   		}
@@ -65,7 +65,15 @@
 			<p>Address: <?= $result['address']?></p>
 			<p>Property Type: <?= $result['propertyType']?></p>		
 			<p>Number of Bedrooms: <?= $result['numBedrooms']?></p>
-			<p>Price: £<?= $result['price']?></p>
+			<p>Price: <?php
+			 	if($result['price'] != "0"){
+			 		echo("£" . $result['price']);
+			 	}
+			 	else{
+			 		echo"TBC";
+			 	}
+			 
+			 ?></p>
 			<p>Description: <?= $result['description']?></p><br><br>
 			<p>Crime Count: <?= getCrime($result['lat'], $result['lng']);?></p>
 			<p>_________________________________________________________________________________________________________________</p>
